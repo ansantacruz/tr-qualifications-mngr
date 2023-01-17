@@ -2,7 +2,7 @@ import debugLib from 'debug';
 import { QueryTypes } from 'sequelize';
 import { executeSQL } from '../database/database';
 import { MessageError } from '../utilities/DebugUtilities';
-import { IBuyerQualification } from '../model/IBuyerQualification';
+import { IBuyerQualificationResponse } from '../model/Response/IBuyerQualificationResponse';
 
 
 const debug = debugLib('tc:BuyerQualificationDataSource');
@@ -10,7 +10,7 @@ const debug = debugLib('tc:BuyerQualificationDataSource');
 export default class BuyerQualificationDataSource {
 
 
-    public static readonly getBuyerQualification = async (): Promise<IBuyerQualification> => {
+    public static readonly getBuyerQualification = async (): Promise<IBuyerQualificationResponse> => {
         debug('Starts the database query of the search configuration');
         try {
             const rqUid = 'test';

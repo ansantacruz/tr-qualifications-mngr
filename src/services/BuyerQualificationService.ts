@@ -1,13 +1,13 @@
 import debugLib from 'debug';
 import BuyerQualificationDataSource from '../datasource/BuyerQualificationDataSource';
-import { IBuyerQualification } from '../model/IBuyerQualification';
+import { IBuyerQualificationResponse } from '../model/Response/IBuyerQualificationResponse';
 
 const debug = debugLib('tc:BuyerQualificationService');
 
 
 export class BuyerQualificationService {
 
-    public static async getBuyerQualification(): Promise<IBuyerQualification> {
+    public static async getBuyerQualification(): Promise<IBuyerQualificationResponse> {
      try {
         const response =  await BuyerQualificationDataSource.getBuyerQualification();
         return Promise.resolve(response);

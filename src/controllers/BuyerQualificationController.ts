@@ -14,7 +14,7 @@ BuyerQualificationController.get(
     RequestLogger.basic,
     async (req: Request, res: Response) => {
         try {
-            console.log('hello')
+            console.log('hello',res)
             const response =  await BuyerQualificationService.getBuyerQualification();
             res.status(HTTP_STATUS_CODES.OK).send(response);
         } catch (err) {

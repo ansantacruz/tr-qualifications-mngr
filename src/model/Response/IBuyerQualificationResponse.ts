@@ -1,4 +1,4 @@
-export interface IBuyerQualification {
+export interface IBuyerQualificationResponse {
     idVendedor: number;
     nombreVendedor: string;
     idComprador: number;

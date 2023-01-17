@@ -2,14 +2,14 @@ import debugLib from 'debug';
 import { QueryTypes } from 'sequelize';
 import { executeSQL } from '../database/database';
 import { MessageError } from '../utilities/DebugUtilities';
-import { ISellerQualification } from '../model/ISellerQualification';
+import { ISellerQualificationResponse } from '../model/Response/ISellerQualificationResponse';
 
 
 const debug = debugLib('tc:SellerQualificationDataSource');
 
 export default class SellerQualificationDataSource {
 
-    public static readonly getSellerQualification = async (): Promise<ISellerQualification> => {
+    public static readonly getSellerQualification = async (): Promise<ISellerQualificationResponse> => {
         debug('Starts the database query of the search configuration');
         try {
             const rqUid = 'test';
