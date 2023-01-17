@@ -1,0 +1,43 @@
+{
+	"env": {
+	  "es2021": true,
+	  "node": true
+	},
+	"extends": [
+	  "eslint:recommended",
+	  "plugin:@typescript-eslint/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+	  "ecmaVersion": 2021,
+	  "sourceType": "module"
+	},
+	"plugins": [
+	  "@typescript-eslint"
+	],
+	"ignorePatterns": [
+	  "test/*"
+	],
+	"rules": {
+	  "@typescript-eslint/no-explicit-any": "off",
+	  "quotes": ["error", "single"],
+	  "semi": "error",
+	  "comma-spacing": ["error", { "before": false, "after": true }],
+	  "comma-style": "error",
+	  "array-bracket-spacing": ["error", "never"],
+	  "no-console": "error",
+	  "no-alert": "error",
+	  "no-trailing-spaces": "error",
+	  "no-whitespace-before-property": "error",
+	  "space-before-blocks": ["error", { "functions": "always", "keywords": "always", "classes": "always" }],
+	  "keyword-spacing": ["error", { "before": true }],
+	  "arrow-spacing": "error",
+	  "brace-style": "error",
+	  "eol-last": ["error", "always"],
+	  "no-multiple-empty-lines": ["error", { "max": 1, "maxBOF": 1 }],
+	  "space-in-parens": ["error", "never"],
+	  "object-curly-spacing": ["error", "always"],
+	  "max-len": ["error", { "code": 120 }]
+	}
+  }
+  
