@@ -2,8 +2,10 @@ import debugLib from 'debug';
 import { QueryTypes } from 'sequelize';
 import { executeSQL } from '../database/database';
 import { MessageError } from '../utilities/DebugUtilities';
+//Model
 import { IBuyerQualificationResponse } from '../model/Response/IBuyerQualificationResponse';
-
+import {IBuyyerAddQualificationRequest} from '../model/Request/IBuyerAddQualificationRequest';
+import {IBuyerAddQualificationResponse} from '../model/Response/IBuyerAddQualificationResponse';
 
 const debug = debugLib('tc:BuyerQualificationDataSource');
 
@@ -40,6 +42,44 @@ export default class BuyerQualificationDataSource {
         } catch (err) {
             debug(`[%s] ${MessageError}`, err);
             return Promise.reject({ Code: 'select_calificacion_comprador', Reason: err });
+        }
+    }
+
+    public static readonly addBuyerQualification = async (dataRequest : IBuyyerAddQualificationRequest): Promise<IBuyerAddQualificationResponse> => {
+        try {
+            let idVendedor = dataRequest.idVendedor;
+            let idComprador = dataRequest.idComprador;
+            let idTipoComentario = dataRequest.idTipoComentario;
+            let comentario = dataRequest.comentario;
+            const rqUid = 'test';
+            const result = await executeSQL(
+                `INSERT INTO tr_data_base.calificacion_comprador (cco_comprador, cco_descripcion, cco_tipoCalificacion, cco_fechaCreacion, cco_vendedor,cco_activo) VALUES ($idComprador, $comentario, $idTipoComentario, now(), '1', $idVendedor);`,
+                QueryTypes.INSERT,
+                {idComprador,comentario,idTipoComentario,idVendedor}
+            );
+            if (result) { 
+                console.log("resultado",result);
+                 const response = {
+                    operationStatus: true,
+                    operationCode: "0000",
+                    operationMessage:"operacion exitosa"
+                };
+                return Promise.resolve(response);
+            } else {
+                console.log("Entra a error 1");
+                debug(`[%s] ${MessageError}`, rqUid, '404 NOMBRE BASE DE DATOS '); // Ajustar el nombre de la base de datos
+                const bodyErrorSearchConfigInfo = {
+                    CodeError: 'select-calificacion_vendedor-404-DB',
+                    Reason: 'BD error NOMBRE BASE DE DATOS', // Ajustar el nombre de la base de datos
+                    StatusCode: '404',
+                };
+                return Promise.reject(bodyErrorSearchConfigInfo);
+            }
+
+        } catch (err) {
+            console.log("Entra a error 1");
+            debug(`[%s] ${MessageError}`, err);
+            return Promise.reject({ Code: 'select-calificacion_vendedor', Reason: err });
         }
     }
 }

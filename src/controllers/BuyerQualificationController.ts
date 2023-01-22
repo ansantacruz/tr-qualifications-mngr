@@ -26,9 +26,20 @@ BuyerQualificationController.get(
     }
 );
 
-//add seller rating
-BuyerQualificationController.post('/Buyer/addBuyerQualification',function(req,res){
-    console.log('Agregar comprador')
-});
+//add buyer rating
+BuyerQualificationController.post(
+    '/Buyer/addBuyerQualification',
+    RequestLogger.basic,
+    async (req: Request, res: Response) => {
+        try {
+            const response =  await BuyerQualificationService.addBuyerQualification(req.body);
+            res.status(HTTP_STATUS_CODES.OK).send(response);
+        } catch (err) {
+            const error = DebugUtilities.error(err, 'Error');
+            debug('ERROR: POST-CoeController: %j', error.statusError);
+            res.status(error.codeStatusError).send(error.statusError);
+        }
+    }
+);
 
 export default BuyerQualificationController;
