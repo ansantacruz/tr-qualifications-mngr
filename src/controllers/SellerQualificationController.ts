@@ -8,13 +8,15 @@ import { SellerQualificationService } from '../services/SellerQualificationServi
 const debug = debugLib('tc:SellerQualificationController');
 const SellerQualificationController = Router();
 
-
+//get seller ratings
 SellerQualificationController.get(
-    '/getSellerQualification',
+    '/Seller/getSellerQualification/:idSeller',
     RequestLogger.basic,
     async (req: Request, res: Response) => {
         try {
-            const response =  await SellerQualificationService.getSellerQualification();
+            const idSeller  = +req.params.idSeller;
+            console.log('idVendedor',idSeller)
+            const response =  await SellerQualificationService.getSellerQualification(idSeller);
             res.status(HTTP_STATUS_CODES.OK).send(response);
         } catch (err) {
             const error = DebugUtilities.error(err, 'Error');
@@ -23,5 +25,10 @@ SellerQualificationController.get(
         }
     }
 );
+
+//add seller rating
+SellerQualificationController.post('/Seller/addSellerQualification',function(req,res){
+    console.log('Agregar vendedor')
+});
 
 export default SellerQualificationController;

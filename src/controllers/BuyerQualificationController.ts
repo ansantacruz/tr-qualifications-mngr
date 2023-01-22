@@ -10,12 +10,13 @@ const BuyerQualificationController = Router();
 
 
 BuyerQualificationController.get(
-    '/getBuyerQualification',
+    '/Buyer/getBuyerQualification/:idBuyer',
     RequestLogger.basic,
     async (req: Request, res: Response) => {
         try {
-            console.log('hello',res)
-            const response =  await BuyerQualificationService.getBuyerQualification();
+            const idBuyer  = +req.params.idBuyer;
+            console.log('idComprador',idBuyer)
+            const response =  await BuyerQualificationService.getBuyerQualification(idBuyer);
             res.status(HTTP_STATUS_CODES.OK).send(response);
         } catch (err) {
             const error = DebugUtilities.error(err, 'Error');
@@ -24,5 +25,10 @@ BuyerQualificationController.get(
         }
     }
 );
+
+//add seller rating
+BuyerQualificationController.post('/Buyer/addBuyerQualification',function(req,res){
+    console.log('Agregar comprador')
+});
 
 export default BuyerQualificationController;

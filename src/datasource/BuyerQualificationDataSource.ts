@@ -10,7 +10,7 @@ const debug = debugLib('tc:BuyerQualificationDataSource');
 export default class BuyerQualificationDataSource {
 
 
-    public static readonly getBuyerQualification = async (): Promise<IBuyerQualificationResponse> => {
+    public static readonly getBuyerQualification = async (idBuyer : number): Promise<IBuyerQualificationResponse> => {
         debug('Starts the database query of the search configuration');
         try {
             const rqUid = 'test';
@@ -20,16 +20,17 @@ export default class BuyerQualificationDataSource {
                 inner join tr_data_base.comprador on cco_comprador = com_id
                 inner join tr_data_base.usuario as venUsu on ven_usuario = venUsu.usu_id
                 inner join tr_data_base.tipo_calificacion on cco_tipoCalificacion = tca_id
-                inner join tr_data_base.usuario as comUsu on com_usuario = comUsu.usu_id;`,
+                inner join tr_data_base.usuario as comUsu on com_usuario = comUsu.usu_id
+                where cco_comprador = $idBuyer;`,
                 QueryTypes.SELECT,
-                {}
+                {idBuyer}
             );
             if (result) {
                 return Promise.resolve(result);
             } else {
                 debug(`[%s] ${MessageError}`, rqUid, '404 NOMBRE BASE DE DATOS '); // Ajustar el nombre de la base de datos
                 const bodyErrorSearchConfigInfo = {
-                    CodeError: 'SELECT-SEARCH_CONFIG-ENTITY-404-DB',
+                    CodeError: 'select_calificacion_comprador-404-DB',
                     Reason: 'BD error NOMBRE BASE DE DATOS', // Ajustar el nombre de la base de datos
                     StatusCode: '404',
                 };
@@ -38,7 +39,7 @@ export default class BuyerQualificationDataSource {
 
         } catch (err) {
             debug(`[%s] ${MessageError}`, err);
-            return Promise.reject({ Code: 'SELECT-SEARCH_CONFIG-ENTITY', Reason: err });
+            return Promise.reject({ Code: 'select_calificacion_comprador', Reason: err });
         }
     }
 }
