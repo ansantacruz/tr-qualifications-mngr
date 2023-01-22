@@ -30,10 +30,10 @@ export default class SellerQualificationDataSource {
             if (result) {
                 return Promise.resolve(result);
             } else {
-                debug(`[%s] ${MessageError}`, rqUid, '404 NOMBRE BASE DE DATOS '); // Ajustar el nombre de la base de datos
+                debug(`[%s] ${MessageError}`, rqUid, '404 tr_data_base'); // Ajustar el nombre de la base de datos
                 const bodyErrorSearchConfigInfo = {
                     CodeError: 'select-calificacion_vendedor-404-DB',
-                    Reason: 'BD error NOMBRE BASE DE DATOS', // Ajustar el nombre de la base de datos
+                    Reason: 'BD error tr_data_base', // Ajustar el nombre de la base de datos
                     StatusCode: '404',
                 };
                 return Promise.reject(bodyErrorSearchConfigInfo);
@@ -68,10 +68,10 @@ export default class SellerQualificationDataSource {
                 return Promise.resolve(response);
             } else {
                 console.log("Entra a error 1");
-                debug(`[%s] ${MessageError}`, rqUid, '404 NOMBRE BASE DE DATOS '); // Ajustar el nombre de la base de datos
+                debug(`[%s] ${MessageError}`, rqUid, '404 tr_data_base'); // Ajustar el nombre de la base de datos
                 const bodyErrorSearchConfigInfo = {
-                    CodeError: 'select-calificacion_vendedor-404-DB',
-                    Reason: 'BD error NOMBRE BASE DE DATOS', // Ajustar el nombre de la base de datos
+                    CodeError: 'add-calificacion_vendedor-404-DB',
+                    Reason: 'BD error tr_data_base', // Ajustar el nombre de la base de datos
                     StatusCode: '404',
                 };
                 return Promise.reject(bodyErrorSearchConfigInfo);
@@ -80,7 +80,7 @@ export default class SellerQualificationDataSource {
         } catch (err) {
             console.log("Entra a error 1");
             debug(`[%s] ${MessageError}`, err);
-            return Promise.reject({ Code: 'select-calificacion_vendedor', Reason: err });
+            return Promise.reject({ Code: 'add-calificacion_vendedorr', Reason: err });
         }
     }
 }

@@ -43,6 +43,4 @@ SellerQualificationController.post(
     }
 );
 
-
-
 export default SellerQualificationController;
