@@ -1,4 +1,4 @@
-export interface ISellerQualification {
+export interface ISellerQualificationResponse {
     idVendedor: number;
     nombreVendedor: string;
     idComprador: number;
