@@ -32,3 +32,4 @@ It's very important that you implement perfectly the guide attached below to col
 
 * addBuyerQualification
  
+ https://sonarcloud.io/summary/new_code?id=ansantacruz_tr-qualifications-mngr&branch=dev
