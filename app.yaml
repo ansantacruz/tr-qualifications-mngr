@@ -1,5 +1,5 @@
 runtime: nodejs12
-service: tc-search-engine-mngr
+service: tc-qualifications-mngr
 env_variables:
     PORT: 9037
     apiPath: ''
