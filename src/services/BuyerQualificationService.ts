@@ -10,7 +10,7 @@ const debug = debugLib('tc:BuyerQualificationService');
 
 export class BuyerQualificationService {
 
-   public static async getBuyerQualification(idBuyer: number): Promise<IBuyerQualificationResponse> {
+   public static async getBuyerQualification(idBuyer: number): Promise<IBuyerQualificationResponse[]> {
       try {
          const response = await BuyerQualificationDataSource.getBuyerQualification(idBuyer);
          return Promise.resolve(response);

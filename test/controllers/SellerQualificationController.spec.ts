@@ -4,7 +4,7 @@ import sinon from 'sinon';
 import app from '../../src/app';
 import config from '../../src/config';
 import { IError } from '../../src/model/IError';
-import { BuyerQualificationService } from '../../src/services/BuyerQualificationService';
+import { SellerQualificationService } from '../../src/services/SellerQualificationService';
 
 
 
@@ -42,22 +42,22 @@ const REJECT_RESPONSE = {
     }
 } as IError;
 
-describe('BuyerQualificationController', () => {
+describe('SellerQualificationController', () => {
     afterEach(() => {
       sinon.restore();
     });
 
     it('should resolve getBuyerQualification', (done) => {
       sinon.replace(
-        BuyerQualificationService,
-          'getBuyerQualification',
+        SellerQualificationService,
+          'getSellerQualification',
         (): Promise<any> => {
           return Promise.resolve(RESOLVE_RESPONSE_BUYER_QUEALIFICATIONS_GET);
         }
       );
       chai
         .request(app)
-        .get(apiPath + '/V1/Buyer/getBuyerQualification/1')
+        .get(apiPath + '/V1/Seller/getSellerQualification/1')
         .end((err, response) => {
           expect(response.status).to.equals(200);
           done();
@@ -66,15 +66,15 @@ describe('BuyerQualificationController', () => {
 
     it('should reject getBuyerQualification', (done) => {
       sinon.replace(
-        BuyerQualificationService,
-          'getBuyerQualification',
+        SellerQualificationService,
+          'getSellerQualification',
         (): Promise<any> => {
           return Promise.reject({status:500});
         }
       );
       chai
         .request(app)
-        .get(apiPath + '/V1/Buyer/getBuyerQualification/1')
+        .get(apiPath + '/V1/Seller/getSellerQualification/1')
         .end((err, response) => {
           expect(response.status).to.equals(500);
           done();
@@ -86,15 +86,15 @@ describe('BuyerQualificationController', () => {
 
     it('should resolve addBuyerQualification', (done) => {
         sinon.replace(
-          BuyerQualificationService,
-            'addBuyerQualification',
+          SellerQualificationService,
+            'addSellerQualification',
           (): Promise<any> => {
             return Promise.resolve(RESOLVE_RESPONSE_BUYER_QUEALIFICATIONS_POST);
           }
         );
         chai
           .request(app)
-          .post(apiPath + '/V1/Buyer/addBuyerQualification')
+          .post(apiPath + '/V1/Seller/addSellerQualification')
           .end((err, response) => {
             expect(response.status).to.equals(200);
             done();
@@ -103,15 +103,15 @@ describe('BuyerQualificationController', () => {
   
       it('should reject addBuyerQualification', (done) => {
         sinon.replace(
-          BuyerQualificationService,
-            'addBuyerQualification',
+          SellerQualificationService,
+            'addSellerQualification',
           (): Promise<any> => {
             return Promise.reject({status:500});
           }
         );
         chai
           .request(app)
-          .post(apiPath + '/V1/Buyer/addBuyerQualification')
+          .post(apiPath + '/V1/Seller/addSellerQualification')
           .end((err, response) => {
             expect(response.status).to.equals(500);
             done();
