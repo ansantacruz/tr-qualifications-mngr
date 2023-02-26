@@ -54,7 +54,7 @@ jobs:
       - name: Run Coverage
         shell: bash
         run: |
-          npm test && run coverage && npm run coverage:report
+          npm run test && npm run coverage && npm run coverage:report
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
