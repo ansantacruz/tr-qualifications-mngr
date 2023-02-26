@@ -18,13 +18,12 @@ on:
     push:
         branches:
             - master
-            - feature/*
 
 # Environment variables available to all jobs and steps in this workflow
 env:
     PROJECT_ID: ${{ secrets.RUN_PROJECT }}
     RUN_REGION: us-central1
-    SERVICE_NAME: tc-qualifications-mngr
+    SERVICE_NAME: tr-qualifications-mngr
     PORT: 8081
 jobs:
   deploy:
@@ -69,13 +68,13 @@ jobs:
 
     - name: Build and Push Container
       run: |-
-        skaffold init --artifact '{"builder":"Docker", "payload":{"path":"Dockerfile"}, "image":"gcr.io/turepuesto/tc-qualifications-mngr"}' --skip-deploy --filename ./skaffold.yaml  --force
+        skaffold init --artifact '{"builder":"Docker", "payload":{"path":"Dockerfile"}, "image":"gcr.io/turepuesto/tr-qualifications-mngr"}' --skip-deploy --filename ./skaffold.yaml  --force
         skaffold build --filename ./skaffold.yaml --kube-context='' --platform=linux/amd64
     - name: Deploy to Cloud Run
       run: |-
         gcloud run deploy ${{ env.SERVICE_NAME }} \
           --project ${{env.PROJECT_ID}} \
-          --image gcr.io/turepuesto/tc-qualifications-mngr \
+          --image gcr.io/turepuesto/tr-qualifications-mngr \
           --region us-central1 \
           --port ${{env.PORT }} \
           --platform "managed" \
