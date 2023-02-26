@@ -19,6 +19,7 @@ export class DebugUtilities {
             '000-0' : error.CodeError.toString();
         const codeStatusError = error.StatusCode === undefined ?
             500 : error.StatusCode;
+        //@ts-ignore
         const descStatusError = httpStatus[codeStatusError].toString();
         const statusError: IError = {
             EndDt: new Date().toISOString(),

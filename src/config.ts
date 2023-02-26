@@ -1,8 +1,9 @@
 
 export default {
+    PORT: 9037,
     apiPath: '',
-    databaseHost: 'tr-data-base.cl37ixkn2obi.us-east-1.rds.amazonaws.com',
-    databasePass: 'Pr0s3gu1r.2709',
+    databaseHost: '34.134.59.167',
+    databasePass: 'root',
     databasePort: '3306',
     databaseUser: 'root',
     databesePoolAcquiere: '30000',
@@ -16,7 +17,7 @@ export default {
     // apikeyHc: process.env.API_KEY_HC || '',
     // apiTvsSendgrid: process.env.API_TVS_SENDGRID || '',
     // environment: process.env.NODE_ENV || 'qa',
-    // fetchTimeout: process.env.FETCH_TIMEOUT || 29000,
+    // fetchTimeout: process.env.FETCH_TIMEOUT || 29000
     // PORT: process.env.PORT || '9087',
 
 };

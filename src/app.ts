@@ -2,8 +2,9 @@ import express from 'express';
 import actuator = require('express-actuator');
 import path from 'path';
 import config from './config';
-import SellerQualificationController from './controllers/SellerQualificationController';
 import BuyerQualificationController from './controllers/BuyerQualificationController';
+import SellerQualificationController from './controllers/SellerQualificationController';
+
 
 const app = express();
 const apiPath = config.apiPath;
@@ -22,6 +23,7 @@ app.use((_, res, next) => {
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE'); // NOSONAR
     next(); // NOSONAR
 });
+
 
 // add the controllers you need here
 app.use(
