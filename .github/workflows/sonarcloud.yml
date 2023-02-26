@@ -51,10 +51,10 @@ jobs:
       - name: Install Dependencies
         run: |
             npm install --force
-      # - name: Run Coverage
-      #   shell: bash
-      #   run: |
-      #     npm run coverage && npm run coverage:report
+      - name: Run Coverage
+        shell: bash
+        run: |
+          npm run test && npm run coverage && npm run coverage:report
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:

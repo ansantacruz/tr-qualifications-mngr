@@ -1,0 +1,14 @@
+runtime: nodejs12
+service: tc-qualifications-mngr
+env_variables:
+    PORT: 9037
+    apiPath: ''
+    databaseHost: '34.134.59.167'
+    databasePass: 'root'
+    databasePort: '3306'
+    databaseUser: 'root'
+    databesePoolAcquiere: '30000'
+    databesePoolIdle:  '10000'
+    databesePoolMax:  '7'
+    databesePoolMin: '0'
+    logSentenceSQL: true

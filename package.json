@@ -6,8 +6,8 @@
   "main": "build/bin/www.js",
   "scripts": {
     "build": "tsc",
-    "deploy": "export DEBUG=bdb:* && node ./build/bin/www.js",
-    "start": "npm run build && set DEBUG=bdb:* && node ./build/bin/www.js",
+    "deploy": "npm run build && node ./build/bin/www.js",
+    "start": "npm run build && export DEBUG=bdb:* && node ./build/bin/www.js",
     "dev": "nodemon --watch src -e ts,js --exec npm start",
     "test:file": "mocha --timeout 10000 --require ts-node/register",
     "test:only": "npm run test:file -- 'test/**/*.spec.ts'",
@@ -33,9 +33,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ansantacruz/tr-qualifications-mngr.git"
+    "url": "git+https://github.com/ansantacruz/tr-search-engine-mngr.git"
   },
-  "author": "carlosangarzon@uan.edu.co",
+  "author": "ansantacruz@uan.edu.co",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.1130.0",
@@ -55,8 +55,7 @@
     "node-fetch": "^2.6.7",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.20.0",
-    "swagger-ui-express": "^4.3.0",
-    "uuid": "^8.3.2"
+    "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
     "@ef-carbon/tspm": "^2.2.5",

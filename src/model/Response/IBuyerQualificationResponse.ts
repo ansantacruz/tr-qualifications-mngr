@@ -4,7 +4,7 @@ export interface IBuyerQualificationResponse {
     idComprador: number;
     nombreComprador: string;
     comentario: string;
-    calificacion: String;
+    calificacion: string;
     porcentajeCalificacion: number;
     fechaComentario: Date;
 }

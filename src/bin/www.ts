@@ -13,7 +13,7 @@
  /**
   * Get port from environment and store in Express.
   */
- const port: string | number | false = normalizePort(process.env.PORT || '9085');
+ const port: string | number | false = normalizePort(process.env.PORT || '9037');
  app.set('port', port);
  debug('Port set to:', port);
 

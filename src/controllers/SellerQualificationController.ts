@@ -16,7 +16,6 @@ SellerQualificationController.get(
     async (req: Request, res: Response) => {
         try {
             const idSeller  = +req.params.idSeller;
-            console.log('idVendedor',idSeller)
             const response =  await SellerQualificationService.getSellerQualification(idSeller);
             res.status(HTTP_STATUS_CODES.OK).send(response);
         } catch (err) {
